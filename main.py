@@ -35,7 +35,6 @@ def check_rain_forecast(date, latitude, longitude):
     else:
         search_date = date
 
-    # Sprawdzenie, czy plik z danymi istnieje i zawiera odpowiedź dla danej daty
     filename = "forecast_data.json"
     try:
         with open(filename, "r") as file:
@@ -46,7 +45,8 @@ def check_rain_forecast(date, latitude, longitude):
         pass
 
     # Wykonanie zapytania do API
-    url = f"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&hourly=rain_1h&daily=rain_sum&timezone=Europe%2FLondon&start_date={search_date}&end_date={search_date}"
+    url = f"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&hourly=rain&daily=rain_sum&timezone=Europe%2FLondon&start_date={search_date}&end_date={search_date}"
+
     response = requests.get(url)
     response_json = response.json()
 
